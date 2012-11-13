@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=CGR 101
+Path=.
+Exec=./run
+Icon=./circuitgear.ico
+
