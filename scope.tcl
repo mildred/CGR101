@@ -243,6 +243,11 @@ proc scope::buildScope {} {
 		-variable scope::probeA	\
 		-value 10.0	\
 		-command {scope::selectProbe a}
+	radiobutton "$scopePath.vertical.cha.probe100X"	\
+		-text "100X"	\
+		-variable scope::probeA	\
+		-value 100.0	\
+		-command {scope::selectProbe a}
 		
 	#Place the channel A vertical controls into their frame
 	grid $scopePath.vertical.cha.chaLabel -row 0 -column 0 -columnspan 2
@@ -253,6 +258,7 @@ proc scope::buildScope {} {
 	grid $scopePath.vertical.cha.zoomIn -row 4 -column 1
 	grid $scopePath.vertical.cha.probe1X -row 5 -column 0
 	grid $scopePath.vertical.cha.probe10X -row 5 -column 1
+	grid $scopePath.vertical.cha.probe100X -row 6 -column 0
 	
 	
 	#Create a frame for the Channel B Controls
@@ -311,6 +317,11 @@ proc scope::buildScope {} {
 		-variable scope::probeB	\
 		-value 10.0	\
 		-command {scope::selectProbe b}
+	radiobutton "$scopePath.vertical.chb.probe100X"	\
+		-text "100X"	\
+		-variable scope::probeB	\
+		-value 100.0	\
+		-command {scope::selectProbe b}
 		
 	#Place the Channel B Vertical Controls into their Frame
 	grid $scopePath.vertical.chb.chbLabel -row 0 -column 0 -columnspan 2
@@ -321,6 +332,7 @@ proc scope::buildScope {} {
 	grid $scopePath.vertical.chb.zoomIn -row 4 -column 1
 	grid $scopePath.vertical.chb.probe1X -row 5 -column 0
 	grid $scopePath.vertical.chb.probe10X -row 5 -column 1
+	grid $scopePath.vertical.chb.probe100X -row 6 -column 0
 	
 	#Arrange the vertical controls frame
 	grid $scopePath.vertical.title -row 0 -column 0 -pady 4
@@ -773,13 +785,18 @@ proc scope::setVertical {} {
 
 proc scope::selectProbe {channel} {
 	if {$channel == "a"} {
-		if {$scope::probeA==10.0} {
+		if {$scope::probeA==100.0} {
+			set scope::verticalIndexA [expr {$scope::verticalIndexA + 6}]
+			if {$scope::verticalIndexA > 9} {
+				set scope::verticalIndexA 9
+			}
+		} elseif {$scope::probeA==10.0} {
 			set scope::verticalIndexA [expr {$scope::verticalIndexA + 3}]
 			if {$scope::verticalIndexA > 9} {
 				set scope::verticalIndexA 9
 			}
 		} else {
-			set scope::verticalIndexA [expr {$scope::verticalIndexA -3 }]
+			set scope::verticalIndexA [expr {$scope::verticalIndexA - 3}]
 			if {$scope::verticalIndexA < 0} {
 				set scope::verticalIndexA 0
 			}
@@ -787,13 +804,18 @@ proc scope::selectProbe {channel} {
 	}
 	
 	if {$channel == "b"} {
-		if {$scope::probeB==10.0} {
+		if {$scope::probeB==100.0} {
+			set scope::verticalIndexB [expr {$scope::verticalIndexB + 6}]
+			if {$scope::verticalIndexB > 9} {
+				set scope::verticalIndexB 9
+			}
+		} elseif {$scope::probeB==10.0} {
 			set scope::verticalIndexB [expr {$scope::verticalIndexB + 3}]
 			if {$scope::verticalIndexB > 9} {
 				set scope::verticalIndexB 9
 			}
 		} else {
-			set scope::verticalIndexB [expr {$scope::verticalIndexB-3}]
+			set scope::verticalIndexB [expr {$scope::verticalIndexB - 3}]
 			if {$scope::verticalIndexB < 0} {
 				set scope::verticalIndexB 0
 			}
