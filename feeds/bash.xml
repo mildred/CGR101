@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<interface uri="http://mildred.fr/2012/0feeds/bash.xml" xmlns="http://zero-install.sourceforge.net/2004/injector/interface">
+  <feed-for interface="http://mildred.fr/2012/0feeds/bash.xml"/>
+  <name>bash</name>
+  <summary>Bash Shell</summary>
+  <category>Development</category>
+  <package-implementation distributions="RPM" main="/bin/bash" package="bash"/>
+</interface>

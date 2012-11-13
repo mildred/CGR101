@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<interface uri="http://mildred.fr/2012/0feeds/CGR101.xml" xmlns="http://zero-install.sourceforge.net/2004/injector/interface">
+  <feed-for interface="http://mildred.fr/2012/0feeds/CGR101.xml"/>
+  <name>CGR101</name>
+  <summary>SysComp CGR101 Oscilloscope</summary>
+  <description>
+Drives the SysComp CGR101 oscilloscope</description>
+  <homepage>http://www.syscompdesign.com/download.html</homepage>
+  <category>Development</category>
+  <icon href="http://www.syscompdesign.com/CircuitGear.jpg" type="image/png"/>
+  <implementation id="sha1new=27762b297132e7e7fe291446f2fa0861207644d4" license="OSI Approved" released="2012-04-19" version="1.19">
+    <archive href="http://www.syscompdesign.com/ReleaseBin/CGR101V119.zip" size="12792429" type="application/zip"/>
+    <command name='run'>
+      <envrionment name='TCLLIBPATH' insert='.'/>
+      <envrionment name='CGR101HOME' value='.'/>
+      <runner interface="http://mildred.fr/2012/0feeds/bash.xml"/>
+      <arg>-c</arg>
+      <arg>env; tclsh ./main.tcl</arg>
+    </command>
+  </implementation>
+</interface>

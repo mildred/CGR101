@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<interface uri="http://mildred.fr/2012/0feeds/tclsh.xml" xmlns="http://zero-install.sourceforge.net/2004/injector/interface">
+  <feed-for interface="http://mildred.fr/2012/0feeds/tclsh.xml"/>
+  <name>tclsh</name>
+  <summary>Tcl Shell</summary>
+  <homepage>http://tcl.tk</homepage>
+  <category>Development</category>
+  <package-implementation distributions="RPM" main="/usr/bin/tclsh" package="tcl"/>
+</interface>
